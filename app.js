@@ -2,6 +2,7 @@ const express=require('express')
 const morgan= require('morgan') 
 const bodyParser= require('body-parser')
 const mongoose= require('mongoose')
+const cors= require('cors')
 //const { json } = require('express/lib/response')
 const productRoutes= require('./api/routes/products')
 const orderRoutes=require("./api/routes/orders")
@@ -22,6 +23,7 @@ async function connect(){
   connect()  
 
 const app= express()
+app.use(cors());
 //il folosim inainte de a face ceva cu req
 app.use(morgan('dev'))
 app.use(bodyParser.urlencoded({extended: false}))
